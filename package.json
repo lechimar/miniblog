@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+    "firebase": "^9.16.0"
+  },
+  "name": "miniblog",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lechimar/miniblog.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lechimar/miniblog/issues"
+  },
+  "homepage": "https://github.com/lechimar/miniblog#readme",
+  "description": ""
+}
