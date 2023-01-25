@@ -1,12 +1,18 @@
 import styles from './Register.module.css';
 import {useState, useEffect} from 'react'
 
+import { useAuthentication } from '../../hooks/useAuthentication';
+
 const Register = () => {
     const [displayName, setDisplayName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [error, setError] = useState(''); // this is a front end error
+
+    const { createUser, error: authError, loading } = useAuthentication();
+
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -25,9 +31,15 @@ const Register = () => {
 
         // send user to back end
         //const res = await createUser(user);
-
+        const res = await createUser(user);
         console.log(user);
     };
+
+    useEffect(() => {
+        if (authError) {
+            setError(authError);
+        }
+    }, [authError]);
 
   return (
     <div className={styles.register}>
@@ -82,7 +94,9 @@ const Register = () => {
                        
                     />
                 </label>
-                <button className='btn'>Cadastrar</button>
+                {!loading && <button className='btn'>Cadastrar</button>}
+                {loading && <button className='btn' disabled>Aguarde...</button>}
+              
                 
             </form>
     </div>
